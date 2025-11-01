@@ -63,6 +63,37 @@ $superheroes = [
   ], 
 ];
 
+$query = isset($_GET['query']) ? trim($_GET['query']) : '';
+
+// If no search was entered → show full list
+if ($query === '') {
+    echo "<ul>";
+    foreach ($superheroes as $hero) {
+        echo "<li>" . htmlspecialchars($hero['alias']) . "</li>";
+    }
+    echo "</ul>";
+    exit;
+}
+
+// Otherwise search for match
+$match = null;
+$q = strtolower($query);
+
+foreach ($superheroes as $hero) {
+    if (strtolower($hero['alias']) === $q || strtolower($hero['name']) === $q) {
+        $match = $hero;
+        break;
+    }
+}
+
+// Show result or not found
+if ($match) {
+    echo "<h3>" . htmlspecialchars(strtoupper($match['alias'])) . "</h3>";
+    echo "<h4>A.K.A " . htmlspecialchars($match['name']) . "</h4>";
+    echo "<p>" . htmlspecialchars($match['biography']) . "</p>";
+} else {
+    echo '<div class="error">SUPERHERO NOT FOUND</div>';
+}
 ?>
 
 <ul>
