@@ -1,12 +1,126 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+/* ----- Base ----- */
+:root{
+  --blue:#3578a8;
+  --blue-dark:#2a6790;
+  --red:#cc2b2b;
+  --text:#222;
+  --muted:#6b7280;
+  --bg:#eceff1;
+  --white:#fff;
+  --radius:8px;
 }
-button {
-    padding: 10px 20px;
-    font-size: 16px;
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
 }
-#output {
-    margin-top: 20px;
-    font-weight: bold;
+
+/* ----- Banner ----- */
+.banner{
+  background:linear-gradient(0deg,var(--blue),var(--blue-dark));
+  padding:28px 16px;
+  color:var(--white);
+  text-align:center;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+.banner h1{
+  margin:0;
+  letter-spacing:.08em;
+  font-size:34px;
+  font-weight:800;
+}
+
+/* ----- Layout ----- */
+.container{
+  max-width:980px;
+  margin:24px auto 40px;
+  padding:0 16px;
+}
+
+/* ----- Search Bar ----- */
+.searchbar{
+  display:flex;
+  gap:10px;
+  background:var(--white);
+  padding:18px;
+  border-radius:var(--radius);
+  box-shadow:0 2px 6px rgba(0,0,0,.07);
+  align-items:center;
+}
+.searchbar input{
+  flex:1;
+  height:42px;
+  padding:0 14px;
+  border:1px solid #d1d5db;
+  border-radius:6px;
+  font-size:16px;
+}
+.searchbar input::placeholder{color:#9ca3af}
+.searchbar button{
+  height:42px;
+  padding:0 18px;
+  background:#d33a2c;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  font-weight:700;
+  cursor:pointer;
+}
+.searchbar button:hover{background:#bb2f23}
+.sr-only{
+  position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;
+}
+
+/* ----- Results Card ----- */
+.results-card{
+  margin-top:18px;
+  background:var(--white);
+  border-radius:var(--radius);
+  box-shadow:0 2px 6px rgba(0,0,0,.07);
+  padding:22px;
+}
+.section-title{
+  margin:0 0 6px;
+  color:#1f2937;
+  letter-spacing:.06em;
+  font-size:20px;
+  font-weight:800;
+}
+.results-card hr{
+  border:none;
+  border-top:2px solid #e5e7eb;
+  margin:12px 0 20px;
+}
+.result-body{font-size:16px; line-height:1.5}
+
+/* ----- List (figure 3) ----- */
+.result-body ul{
+  padding-left:22px;
+  margin:6px 0 0;
+}
+
+/* ----- Single hero (figure 4) ----- */
+.result-body h3{ /* alias */
+  margin:0 0 2px;
+  font-size:20px;
+  letter-spacing:.06em;
+}
+.result-body h4{ /* real name */
+  margin:0 0 12px;
+  color:var(--muted);
+  letter-spacing:.05em;
+}
+.result-body p{
+  margin:0;
+}
+
+/* ----- Not found (figure 5) ----- */
+.result-body .error{
+  color:var(--red);
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
 }
